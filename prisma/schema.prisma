@@ -13,8 +13,8 @@ datasource db {
   
 model User {
   id              Int       @id @default(autoincrement())
-  userName        String    @unique
-  passwor         String
+  userName        String    
+  password        String
   email           String    @unique
   phoneNumber     String
   currency        String
@@ -24,6 +24,21 @@ model User {
   updatedAt       DateTime  @updatedAt
   lastLogin       DateTime?
   status          Boolean   @default(true)
+  fixedIncomeItems FixedIncomeItem[]
+  @@index([email])
+}
+
+model FixedIncomeItem {
+  id          Int      @id @default(autoincrement())
+  incomeName  String
+  userId      Int      // This references the User model's id
+  user        User     @relation(fields: [userId], references: [id])
+  amount      Decimal
+  creditedDay Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
 }
 
 model TestTable {
