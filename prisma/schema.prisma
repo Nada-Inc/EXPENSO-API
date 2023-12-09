@@ -26,11 +26,11 @@ model User {
   lastLogin           DateTime?
   status              Boolean               @default(true)
   fixedIncomeItems    FixedIncomeItem[]
-  FixedExpenseItem    FixedExpenseItem[]
-  ExpenseItem         ExpenseItem[]
-  VariableExpenseItem VariableExpenseItem[]
-  Summary             Summary[]
-  BankAccount         BankAccount[]
+  fixedExpenseItem    FixedExpenseItem[]
+  expenseItem         ExpenseItem[]
+  variableExpenseItem VariableExpenseItem[]
+  summary             Summary[]
+  bankAccount         BankAccount[]
 
   @@index([email])
 }
