@@ -25,6 +25,7 @@ model User {
   lastLogin       DateTime?
   status          Boolean   @default(true)
   fixedIncomeItems FixedIncomeItem[]
+  FixedExpenseItem FixedExpenseItem[]
   @@index([email])
 }
 
@@ -40,6 +41,21 @@ model FixedIncomeItem {
 
   @@index([userId])
 }
+
+model FixedExpenseItem {
+  id            Int      @id @default(autoincrement())
+  expenseName   String
+  amount        Decimal
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  creditedDay   Int      @default(1)
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+
 
 model TestTable {
   id   Int    @id @default(autoincrement())
