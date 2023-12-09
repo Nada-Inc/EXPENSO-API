@@ -38,9 +38,24 @@ model FixedIncomeItem {
   creditedDay Int      @default(1)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
+  fixedIncomeItem FixedIncome[]
   @@index([userId])
 }
+
+
+model FixedIncome {
+  id          Int       @id @default(autoincrement())
+  fixIncomeId Int
+  amount      Float     
+  date        DateTime
+  updatedAt   DateTime  @default(now()) @updatedAt
+
+  // Define the relation to FixedIncomeItem model
+  fixedIncomeItem FixedIncomeItem @relation(fields: [fixIncomeId], references: [id])
+
+  @@index([fixIncomeId])
+}
+
 
 model FixedExpenseItem {
   id            Int      @id @default(autoincrement())
@@ -54,7 +69,6 @@ model FixedExpenseItem {
 
   @@index([userId])
 }
-
 
 
 model TestTable {

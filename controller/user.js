@@ -107,7 +107,7 @@ router.get(
       });
 
       if (existingUser) {
-        return next(new ErrorHandler("User already exists", 400));
+        return next(new ErrorHandler("User already registered", 400));
       }
 
       const createdUser = await prisma.user.create({
