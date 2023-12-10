@@ -4,12 +4,12 @@ const express = require('express');
 const router = express.Router();
 const { isAuthenticated } = require("../middleware/auth");
 
-// Create FixedIncomeItem
-router.post('/addItem',isAuthenticated, async (req, res) => {
+// Create fixedIncome
+router.post('/add',isAuthenticated, async (req, res) => {
   try {
     const  userId= req.user.id
     const { incomeName, amount, creditedDay } = req.body;
-    const fixedIncomeItem = await prisma.fixedIncomeItem.create({
+    const fixedIncome = await prisma.fixedIncome.create({
       data: {
         incomeName,
         userId,
@@ -17,18 +17,18 @@ router.post('/addItem',isAuthenticated, async (req, res) => {
         creditedDay,
       },
     });
-    res.json(fixedIncomeItem);
+    res.json(fixedIncome);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// Update FixedIncomeItem
-router.put('/updateItem', isAuthenticated, async (req, res) => {
+// Update fixedIncome
+router.put('/update', isAuthenticated, async (req, res) => {
   try {
     const  userId= req.user.id
     const { incomeName, id, amount, creditedDay } = req.body;
-    const updatedFixedIncomeItem = await prisma.fixedIncomeItem.update({
+    const updatedfixedIncome = await prisma.fixedIncome.update({
       where: { id: parseInt(id) },
       data: {
         incomeName,
@@ -37,22 +37,22 @@ router.put('/updateItem', isAuthenticated, async (req, res) => {
         creditedDay,
       },
     });
-    res.json(updatedFixedIncomeItem);
+    res.json(updatedfixedIncome);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// Delete FixedIncomeItem
-router.delete('/deleteItem', isAuthenticated, async (req, res) => {
+// Delete fixedIncome
+router.delete('/delete', isAuthenticated, async (req, res) => {
   try {
     const { id } = req.body;
-    await prisma.fixedIncomeItem.delete({
+    await prisma.fixedIncome.delete({
       where: { id: parseInt(id) },
     });
-    res.json({ message: 'FixedIncomeItem deleted successfully' });
+    res.json({ message: 'fixedIncome deleted successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Could not delete FixedIncomeItem' });
+    res.status(500).json({ error: 'Could not delete fixedIncome' });
   }
 });
 
