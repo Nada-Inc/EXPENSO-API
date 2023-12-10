@@ -34,14 +34,14 @@ const autoCredit = async () => {
       },
     });
     console.log(days,creditedData)
-    // for (const element of creditedData) {
-    //   await prisma.fixedIncomeData.create({
-    //     data: {
-    //       fixIncomeId: element.id,
-    //       amount: element.amount,
-    //     },
-    //   });
-    // }
+    for (const element of creditedData) {
+      await prisma.fixedIncomeData.create({
+        data: {
+          fixIncomeId: element.id,
+          amount: element.amount,
+        },
+      });
+    }
   } catch (error) {
     console.log("error:",error);
   }
