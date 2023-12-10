@@ -8,13 +8,13 @@ const { isAuthenticated } = require("../middleware/auth");
 router.post('/add',isAuthenticated, async (req, res) => {
   try {
     const  userId= req.user.id
-    const { incomeName, amount, creditedDay } = req.body;
+    const { incomeName, amount, creditDate } = req.body;
     const fixedIncome = await prisma.fixedIncome.create({
       data: {
         incomeName,
         userId,
         amount,
-        creditedDay,
+        creditDate,
       },
     });
     res.json(fixedIncome);
@@ -27,14 +27,14 @@ router.post('/add',isAuthenticated, async (req, res) => {
 router.put('/update', isAuthenticated, async (req, res) => {
   try {
     const  userId= req.user.id
-    const { incomeName, id, amount, creditedDay } = req.body;
+    const { incomeName, id, amount, creditDate } = req.body;
     const updatedfixedIncome = await prisma.fixedIncome.update({
-      where: { id: parseInt(id) },
+      where: { id: id },
       data: {
         incomeName,
         userId,
         amount,
-        creditedDay,
+        creditDate,
       },
     });
     res.json(updatedfixedIncome);
@@ -48,7 +48,7 @@ router.delete('/delete', isAuthenticated, async (req, res) => {
   try {
     const { id } = req.body;
     await prisma.fixedIncome.delete({
-      where: { id: parseInt(id) },
+      where: { id: id  },
     });
     res.json({ message: 'fixedIncome deleted successfully' });
   } catch (error) {
