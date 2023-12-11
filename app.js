@@ -19,7 +19,7 @@ app.use("/test", test);
 app.use("/user", user);
 app.use("/fixedIncome", fixedIncome);
 
-cron.schedule("01 07 * * *", async () => {
+cron.schedule('*/5 * * * *', async () => {
     await autoCredit();
   });
 // app.get('/hai',(req,res)=>{
