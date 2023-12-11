@@ -13,19 +13,17 @@ app.use(bodyParser.json());
 const test = require("./controller/test");
 const user = require("./controller/user");
 const fixedIncome = require("./controller/fixedIncome");
+const fixedIncomeData = require("./controller/fixedIncomeData");
 
 
 app.use("/test", test);
 app.use("/user", user);
 app.use("/fixedIncome", fixedIncome);
+app.use("/fixedIncomeData", fixedIncomeData);
 
-cron.schedule('*/5 * * * *', async () => {
-    await autoCredit();
-  });
-// app.get('/hai',(req,res)=>{
-//     autoCredit()
-//     res.send("working")
-// })
+// cron.schedule('*/5 * * * *', async () => {
+//     await autoCredit();
+//   });
 
 
 module.exports =app;
