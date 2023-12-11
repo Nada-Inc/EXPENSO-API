@@ -13,7 +13,6 @@ datasource db {
 
 // User Modal
 model User {
-
   id               String            @id @default(uuid()) @db.Char(36)
   userName         String
   password         String
@@ -22,13 +21,10 @@ model User {
   currency         String
   country          String
   subscriptionType String
-
   lastLogin        DateTime?
   status           Boolean           @default(true)
-
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
-
   fixedIncome      FixedIncome[]
   variableIncome   VariableIncome[]
   fixedExpense     FixedExpense[]
@@ -47,22 +43,18 @@ model FixedIncome {
   user            User              @relation(fields: [userId], references: [id])
   amount          Decimal
   creditDate      Int               @default(1)
-
   createdAt       DateTime          @default(now())
   updatedAt       DateTime          @updatedAt
-
   fixedIncomeData FixedIncomeData[]
 
   @@index([userId])
 }
 
 model FixedIncomeData {
-
   id          String   @id @default(uuid()) @db.Char(36)
   fixIncomeId String
-  fixedIncomeItem FixedIncome @relation(fields: [fixIncomeId], references: [id])
+  fixedIncome FixedIncome @relation(fields: [fixIncomeId], references: [id])
   amount      Float
-
   createdDate DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -75,10 +67,8 @@ model VariableIncome {
   amount             Float
   userId             String // This references the User model's id
   user               User                 @relation(fields: [userId], references: [id])
-
   createdDate        DateTime             @default(now())
   updatedAt          DateTime             @updatedAt
-
   variableIncomeData VariableIncomeData[]
 
   @@index([userId])
@@ -90,8 +80,6 @@ model VariableIncomeData {
   variableIncomeId String
   variableIncome   VariableIncome @relation(fields: [variableIncomeId], references: [id])
   amount           Float
-
-
   createdDate DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -107,7 +95,6 @@ model FixedExpense {
   debitDate        DateTime
   userId           String
   user             User               @relation(fields: [userId], references: [id])
-
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
 
@@ -121,7 +108,6 @@ model FixedExpenseData {
   amount         Decimal
   fixedExpenseId String
   fixedExpense   FixedExpense @relation(fields: [fixedExpenseId], references: [id])
-
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
 
@@ -135,7 +121,6 @@ model VariableExpense {
   amount            Float
   userId            String
   user              User     @relation(fields: [userId], references: [id])
-
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
@@ -151,7 +136,6 @@ model Summary {
   varIncomeTotal  Float
   userId          String
   user            User     @relation(fields: [userId], references: [id])
-
   updatedAt       DateTime @updatedAt
   createdAt       DateTime @default(now())
 
