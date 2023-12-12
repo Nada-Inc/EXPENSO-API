@@ -49,7 +49,6 @@ router.post("/autoCredit", async (req, res) => {
     res.json({ message: "ok" });
   } catch (error) {
     res.status(500).json({ error: "error" });
-    res.status()
   }
 });
 
