@@ -42,11 +42,14 @@ router.post("/autoCredit", async (req, res) => {
         data: {
           fixIncomeId: element.id,
           amount: element.amount,
+          date:date
         },
       });
     }
+    res.json({ message: "ok" });
   } catch (error) {
-    console.log("error:", error);
+    res.status(500).json({ error: "error" });
+    res.status()
   }
 });
 
