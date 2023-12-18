@@ -1,3 +1,7 @@
+const dotenv = require("dotenv");
+
+dotenv.config()
+
 const app = require("./app");
 
 // Handling uncaught Exception
@@ -16,6 +20,7 @@ const app = require("./app");
 //   });
 // });
 
+console.log("PORT", process.env.PORT)
 // create server
 const server = app.listen(process.env.PORT, () => {
   console.log(
