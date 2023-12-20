@@ -1,15 +1,130 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "0.0.1",
-    "title": "Expenso API",
+    "version": "1.0.0",
+    "title": "Expenso REST API",
     "description": ""
   },
   "host": "localhost:8000",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": [
+    "http"
+  ],
   "paths": {
-    "/createUser": {
+    "/test/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/test/getAllRecords": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/test/addRecord": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/test/updateRecord/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/test/deleteRecord/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/createUser": {
       "post": {
         "description": "",
         "parameters": [
@@ -51,7 +166,7 @@
         }
       }
     },
-    "/activation/{id}": {
+    "/user/activation/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -69,7 +184,7 @@
         }
       }
     },
-    "/updateUser": {
+    "/user/updateUser": {
       "put": {
         "description": "",
         "parameters": [
@@ -113,7 +228,7 @@
         }
       }
     },
-    "/getUser": {
+    "/user/getUser": {
       "get": {
         "description": "",
         "parameters": [
@@ -130,7 +245,7 @@
         }
       }
     },
-    "/loginUser": {
+    "/user/loginUser": {
       "post": {
         "description": "",
         "parameters": [
@@ -157,7 +272,7 @@
         }
       }
     },
-    "/logout": {
+    "/user/logout": {
       "get": {
         "description": "",
         "parameters": [
@@ -174,7 +289,7 @@
         }
       }
     },
-    "/changePassword": {
+    "/user/changePassword": {
       "put": {
         "description": "",
         "parameters": [
@@ -206,7 +321,7 @@
         }
       }
     },
-    "/add": {
+    "/fixedIncome/add": {
       "post": {
         "description": "",
         "parameters": [
@@ -244,7 +359,7 @@
         }
       }
     },
-    "/update": {
+    "/fixedIncome/update": {
       "put": {
         "description": "",
         "parameters": [
@@ -285,7 +400,7 @@
         }
       }
     },
-    "/delete": {
+    "/fixedIncome/delete": {
       "delete": {
         "description": "",
         "parameters": [
@@ -317,7 +432,7 @@
         }
       }
     },
-    "/autoCredit": {
+    "/fixedIncomeData/autoCredit": {
       "post": {
         "description": "",
         "responses": {
@@ -330,7 +445,7 @@
         }
       }
     },
-    "/update/{id}": {
+    "/fixedIncomeData/update/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -363,7 +478,7 @@
         }
       }
     },
-    "/delete/{id}": {
+    "/fixedIncomeData/delete/{id}": {
       "delete": {
         "description": "",
         "parameters": [
