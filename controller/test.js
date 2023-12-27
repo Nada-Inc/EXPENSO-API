@@ -76,8 +76,8 @@ router.delete('/deleteRecord/:id', async (req, res) => {
   }
 });
 
-test('sample test', () => {
-  expect(true).toBe(true);
-});
+// test('sample test', () => {
+//   expect(true).toBe(true);
+// });
 
 module.exports = router;
