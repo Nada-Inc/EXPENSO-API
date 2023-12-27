@@ -1,11 +1,8 @@
-
 ![Logo](https://raw.githubusercontent.com/ananduremanan/Demo/main/New%20Proposed%20Design%20Track.png)
-
 
 # Expenso API
 
 Expenso is a mobile app aim to track daily expenses and produce an insight on someone’s expense behavior. Expenso provides a rich graphic representation of user’s expense behavior using graphs and charts.
-
 
 ## Run Locally
 
@@ -33,33 +30,11 @@ Start the server
   npm run dev
 ```
 
-
 ## API Reference
 
-#### Get all items
-
-```http
-  GET /api/items
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-
+Refer at http://localhost:8000/doc for full API reference
 
 ## Authors
 
 - [@vishnu-a-b](https://github.com/vishnu-a-b)
 - [@anandhuremanan](https://github.com/ananduremanan)
-
