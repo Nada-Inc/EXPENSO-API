@@ -17,12 +17,18 @@ const test = require("./controller/test");
 const user = require("./controller/user");
 const fixedIncome = require("./controller/fixedIncome");
 const fixedIncomeData = require("./controller/fixedIncomeData");
+const fixedExpense = require("./controller/fixedExpense");
+const variableExpense = require("./controller/variableExpense");
 
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use("/test", test);
 app.use("/user", user);
+
 app.use("/fixedIncome", fixedIncome);
 app.use("/fixedIncomeData", fixedIncomeData);
+
+app.use("/fixedExpense", fixedExpense);
+app.use("/variableExpense", variableExpense);
 
 // cron.schedule('*/5 * * * *', async () => {
 //     await autoCredit();
