@@ -51,13 +51,13 @@ model FixedIncome {
 }
 
 model FixedIncomeData {
-  id          String   @id @default(uuid()) @db.Char(36)
+  id          String      @id @default(uuid()) @db.Char(36)
   fixIncomeId String
   fixedIncome FixedIncome @relation(fields: [fixIncomeId], references: [id])
   amount      Float
   date        DateTime
-  createdDate DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdDate DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 
   @@index([fixIncomeId])
 }
@@ -76,14 +76,13 @@ model VariableIncome {
 }
 
 model VariableIncomeData {
-
   id               String         @id @default(uuid()) @db.Char(36)
   variableIncomeId String
   variableIncome   VariableIncome @relation(fields: [variableIncomeId], references: [id])
   amount           Float
   date             DateTime
-  createdDate      DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdDate      DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
 
   @@index([variableIncomeId])
 }
@@ -91,14 +90,14 @@ model VariableIncomeData {
 // Expense Modals
 
 model FixedExpense {
-  id               String             @id @default(uuid()) @db.Char(36)
-  expenseName      String
-  amount           Decimal
-  debitDate        DateTime
-  userId           String
-  user             User               @relation(fields: [userId], references: [id])
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime           @updatedAt
+  id          String   @id @default(uuid()) @db.Char(36)
+  expenseName String
+  amount      Decimal
+  debitDate   DateTime
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   fixedExpenseData FixedExpenseData[]
 
