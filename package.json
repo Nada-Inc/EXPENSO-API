@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node swagger.js && nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx jest test",
     "swagger-autogen": "node swagger.js"
   },
   "keywords": [],
