@@ -39,7 +39,7 @@ model User {
 model FixedIncome {
   id              String            @id @default(uuid()) @db.Char(36)
   incomeName      String
-  userId          String // This references the User model's id
+  userId          String
   user            User              @relation(fields: [userId], references: [id])
   amount          Decimal
   creditDate      Int               @default(1)
@@ -66,7 +66,7 @@ model VariableIncome {
   id                 String               @id @default(uuid()) @db.Char(36)
   incomeame          String
   amount             Float
-  userId             String // This references the User model's id
+  userId             String
   user               User                 @relation(fields: [userId], references: [id])
   createdDate        DateTime             @default(now())
   updatedAt          DateTime             @updatedAt
@@ -117,15 +117,14 @@ model FixedExpenseData {
 }
 
 model VariableExpense {
-  id                String   @id @default(uuid()) @db.Char(36)
-  variableExpenseId String
-  expenseName       String
-  amount            Float
-  userId            String
-  user              User     @relation(fields: [userId], references: [id])
-  date              DateTime
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  id          String   @id @default(uuid()) @db.Char(36)
+  expenseName String
+  amount      Float
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@index([userId])
 }
@@ -150,4 +149,28 @@ model TestTable {
   id   Int    @id @default(autoincrement())
   name String
   age  Int?
+}
+
+// This section is for testing out planetscale and cyclic
+
+model noteUser {
+  id        String      @id @default(uuid()) @db.Char(36)
+  userName  String
+  userId    String      @unique
+  password  String
+  email     String      @unique
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  userNotes UserNotes[]
+}
+
+model UserNotes {
+  id          String    @id @default(uuid()) @db.Char(36)
+  userId      String
+  noteUser    noteUser? @relation(fields: [userId], references: [id])
+  title       String
+  description String
+  createdAt   DateTime
+
+  @@index([userId])
 }
