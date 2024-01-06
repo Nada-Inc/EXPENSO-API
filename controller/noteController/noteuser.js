@@ -75,6 +75,8 @@ router.post("/loginNoteUser", async (req, res, next) => {
             success: true,
             message: `User logged in successfully`,
             token,
+            userName: user.userName,
+            userId: user.userId,
         });
     } catch (error) {
         return next(new ErrorHandler(error.message, 400));
