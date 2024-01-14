@@ -24,7 +24,7 @@ router.post("/createNoteUser", async (req, res, next) => {
         });
 
         if (existingUser) {
-            return next(new ErrorHandler("UserName already exists", 400));
+            return next(new ErrorHandler("UserName already exists", 401));
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -67,7 +67,7 @@ router.post("/loginNoteUser", async (req, res, next) => {
 
         const token = jwt.sign(
             { userId: user.id },
-            process.env.ACTIVATION_SECRET,
+            process.env.JWT_SECRET_KEY,
             { expiresIn: '1h' }
         );
 
