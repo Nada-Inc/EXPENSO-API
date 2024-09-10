@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/ananduremanan/Demo/main/New%20Proposed%20Design%20Track.png)
+<!-- ![Logo](https://raw.githubusercontent.com/ananduremanan/Demo/main/New%20Proposed%20Design%20Track.png) -->
 
 # Expenso API
 
